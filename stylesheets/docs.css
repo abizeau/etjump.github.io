@@ -1,0 +1,10 @@
+.deprecated {
+    text-decoration: line-through;
+    color: gray;
+}
+
+td {
+    padding-left: 5px;
+    padding-right: 5px;
+
+}

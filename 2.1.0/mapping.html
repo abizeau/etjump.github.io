@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/docs.css">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <title>ETJump documentation by etjump</title>
-  </head>
+</head>
 
-  <body>
-    <div id="container">
-      <div class="inner">
+<body>
+<div id="container">
+    <div class="inner">
 
         <header>
-          <h1>ETJump documentation</h1>
-          <h2></h2>
+            <h1>ETJump documentation</h1>
+            <h2></h2>
         </header>
 
         <section id="downloads" class="clearfix">
-          <a href="https://github.com/etjump" id="view-on-github" class="button"><span>View on GitHub</span></a>
+            <a href="https://github.com/etjump" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
 
         <hr>
@@ -31,15 +32,479 @@
         <h1>Under construction</h1>
 
         <section id="main_content">
-          <a href="mapping.html">Mapping</a>
+            <h2>Entities</h2>
+            <!--
+            etjump203_target_relay
+            -->
+            <h3>etjump203_target_relay</h3>
+            <p>A target_relay that works only on ETJump 2.0.3 and newer.</p>
+
+            <!--
+            etjump2_target_relay
+            -->
+            <h3>etjump2_target_relay</h3>
+            <p>A target_relay that works only on ETJump 2.0.0 and newer.</p>
+
+            <!--
+            target_activate
+            -->
+            <h3 class="deprecated">target_activate (deprecated)</h3>
+            <p>
+                A replacement (target_tracker and trigger_target) has been added in ETJump 2.1.0 that is both easier to
+                use and allows for more complex
+                designs.
+            </p>
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>spawnflags</td>
+                    <td>0, 1, 2, 4</td>
+                    <td>0</td>
+                    <td>
+                        If 0, actives if player's map progression identifier is
+                        equal to the target_activate's reqident. If 1, activates
+                        if player's map progression identifier is below the target_activate's
+                        reqident. If 2, activates if player's map progression
+                        identifier is not equal to the target_activate's reqident.
+                        If 4, activates if player's map progression identifier is
+                        greater than target_activate's reqident.
+                    </td>
+                </tr>
+                <tr>
+                    <td>reqident</td>
+                    <td>Any positive integer</td>
+                    <td>0</td>
+                    <td>
+                        Activates if players map progression identifier matches the
+                        pre-defined requirements.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            target_activate_if_velocity
+            -->
+            <h3>target_activate_if_velocity</h3>
+            <p>
+                Activates targeted entities if player's velocity is between
+                the lower and upper velocity limit.
+            </p>
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>spawnflags</td>
+                    <td>0, 1, 2</td>
+                    <td>0</td>
+                    <td>
+                        If 0, speed will be calculated from horizontal and vertical velocity.
+                        If 1, speed will be calculated from horizontal velocity.
+                        If 2, speed will be calculated from vertical velocity.
+                    </td>
+                </tr>
+                <tr>
+                    <td>lower_limit</td>
+                    <td>Any positive integer</td>
+                    <td>0</td>
+                    <td>If value is higher than lower limit, targets will be activated.</td>
+                </tr>
+                <tr>
+                    <td>upper_limit</td>
+                    <td>Any positive integer</td>
+                    <td>0</td>
+                    <td>If value is lower than upper limit, targets will be activated.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            target_ftrelay
+            -->
+            <h3>target_ftrelay</h3>
+            <p>
+                Works exactly like target_relay but activates the entities
+                for everyone in the player's current fireteam, not just the player.
+            </p>
+
+            <!--
+            target_increase_ident
+            -->
+            <h3>target_increase_ident</h3>
+            <p>Increases the players map progression identifier.</p>
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>inc</td>
+                    <td>Any integer</td>
+                    <td>1</td>
+                    <td>
+                        How much the identifier should be increased when player activates
+                        the entity.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            target_printname
+            -->
+            <h3>target_printname</h3>
+            <p>Works exactly like target_print, but prints the message as popup rather than centerprint. Prints
+                activator's name if message contains %s.</p>
+
+            <h3>target_remove_portals</h3>
+            <p>Removes activators's existing portals.</p>
+
+            <h3>target_save</h3>
+            <p>Saves current position to activators's save slot 0.</p>
+
+            <h3>target_savereset</h3>
+            <p>Resets activator's saved positions.</p>
+
+            <h3>target_scale_velocity</h3>
+            <p>Scales activator's velocity.</p>
+
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>scale</td>
+                    <td>Any integer</td>
+                    <td>1</td>
+                    <td>
+                        How many times should be velocity be multiplied.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            target_setident
+            -->
+            <h3>target_setident</h3>
+            <p>
+                Sets the activator's map progression identifier.
+            </p>
+
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ident</td>
+                    <td>Any integer</td>
+                    <td>0</td>
+                    <td>
+                        The value the identifier will be set to.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            target_startTimer
+            -->
+            <h3>target_startTimer</h3>
+            <p>Starts a timerun for activator.</p>
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>name</td>
+                    <td>Text</td>
+                    <td>default</td>
+                    <td>
+                        The name of the run. Start and stop timer must have a matching
+                        name.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            target_stopTimer
+            -->
+            <h3>target_stopTimer</h3>
+            <p>Stops a timerun for activator.</p>
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>name</td>
+                    <td>Text</td>
+                    <td>default</td>
+                    <td>
+                        The name of the run. Start and stop timer must have a matching
+                        name.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            target and trigger tracker
+            -->
+            <h3>trigger_tracker and target_tracker</h3>
+            <p>Replacement for target_activate.</p>
+            <p>
+                There are three different formats for specifying the tracker index and value.
+            <ol>
+                <li>
+                    &ltvalue&gt
+                    Set the tracker on index 1 to &ltvalue&gt
+                </li>
+                <li>
+                    &ltindex, value&gt
+                    Set the tracker on index &ltindex&gt to &ltvalue&gt
+                </li>
+                <li>
+                    &ltindex1,value1&gt|&ltindex2,value2&gt|..|&ltindexN,valueN&gt
+                    Set the trackers on indices &ltindex1, index2, .., indexN&gt to values &ltvalue1, value2, ..,
+                    valueN&gt
+                </li>
+            </ol>
+
+
+            <h4>Examples</h4>
+            <table>
+                <thead>
+                <td>Key</td>
+                <td>Value</td>
+                <td>Meaning</td>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>tracker_eq</td>
+                    <td>1</td>
+                    <td>tracker on index 1 has to be 1</td>
+                </tr>
+                <tr>
+                    <td>tracker_eq</td>
+                    <td>2,1</td>
+                    <td>tracker on index 2 has to be 1</td>
+                </tr>
+                <tr>
+                    <td>
+                        tracker_eq
+                    </td>
+                    <td>1,1|2,1|3,1</td>
+                    <td>trackers on indices 1, 2 and 3 have to be 1</td>
+                </tr>
+                </tbody>
+            </table>
+
+            </p>
+            <h4>Keys</h4>
+            <table>
+                <thead>
+                <td>Key</td>
+                <td>Possible values</td>
+                <td>Default value</td>
+                <td>Description</td>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>tracker_eq</td>
+                    <td>&ltindex,value&gt format specified above.</td>
+                    <td>1,-1</td>
+                    <td>Tracker activates targets if specified tracker value matches the player's tracker value.</td>
+                </tr>
+                <tr>
+                    <td>tracker_gt</td>
+                    <td>&ltindex,value&gt format specified above.</td>
+                    <td>1,-1</td>
+                    <td>Tracker activates targets if player's tracker value is greater than specified value.</td>
+                </tr>
+                <tr>
+                    <td>tracker_lt</td>
+                    <td>&ltindex,value&gt format specified above.</td>
+                    <td>1,-1</td>
+                    <td>Tracker activates targets if player's tracker value is less than the specified value.</td>
+                </tr>
+                <tr>
+                    <td>tracker_set</td>
+                    <td>&ltindex,value&gt format specified above.</td>
+                    <td>1,-1</td>
+                    <td>Tracker sets player's tracker value to the specified value.</td>
+                </tr>
+                <tr>
+                    <td>tracker_set_if</td>
+                    <td>&ltindex,value&gt format specified above.</td>
+                    <td>1,-1</td>
+                    <td>Tracker sets player's tracker value to the specified value if conditions are true.</td>
+                </tr>
+                <tr>
+                    <td>tracker_inc</td>
+                    <td>&ltindex,value&gt format specified above.</td>
+                    <td>1,0</td>
+                    <td>Tracker increases player's target value by the specified value.</td>
+                </tr>
+                <tr>
+                    <td>tracker_inc_if</td>
+                    <td>&ltindex,value&gt format specified above.</td>
+                    <td>1,0</td>
+                    <td>Tracker increases player's target value by the specified value if conditions are true.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--
+            weapon_portalgun
+            -->
+            <h3>weapon_portalgun</h3>
+            <p>Spawns a portal gun at the location.</p>
+
+            <h3 id="worldspawn-keys">Worldspawn keys</h3>
+            <table>
+                <thead>
+                <tr>
+                    <td>Key</td>
+                    <td>Possible values</td>
+                    <td>Default value</td>
+                    <td>Description</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>noexplosives</td>
+                    <td>0, 1, 2</td>
+                    <td>0</td>
+                    <td>
+                        Disables explosives. 0 explosives are allowed.
+                        1 no explosive weapons. 2 no dynamite.
+                    </td>
+                </tr>
+                <tr>
+                    <td>noghost</td>
+                    <td>0, 1</td>
+                    <td>0</td>
+                    <td>Disables player ghosting</td>
+                </tr>
+                <tr>
+                    <td>nogod</td>
+                    <td>0, 1</td>
+                    <td>0</td>
+                    <td>Disables god mode</td>
+                </tr>
+                <tr>
+                    <td>nogoto</td>
+                    <td>0, 1</td>
+                    <td>0</td>
+                    <td>Disables goto</td>
+                </tr>
+                <tr>
+                    <td>nonoclip</td>
+                    <td>0, 1</td>
+                    <td>0</td>
+                    <td>Disables noclip</td>
+                </tr>
+                <tr>
+                    <td>nosave</td>
+                    <td>0, 1</td>
+                    <td>0</td>
+                    <td>Disables save</td>
+                </tr>
+                <tr>
+                    <td>portalgun_spawn</td>
+                    <td>0, 1</td>
+                    <td>0</td>
+                    <td>Toggles whether players should spawn with a portal gun.</td>
+                </tr>
+                <tr>
+                    <td>portalsurfaces</td>
+                    <td>0, 1</td>
+                    <td>1</td>
+                    <td>
+                        If set to 1, players can shoot portals everywhere on the map. If set to 0, players can only
+                        shoot portals to areas with <code>surfaceparm monsterslickeast</code>.
+                    </td>
+                </tr>
+                <tr>
+                    <td>portalteam</td>
+                    <td>0, 1, 2</td>
+                    <td>0</td>
+                    <td>
+                        If set to 0, players can only go to own portals. If
+                        set to 1, players can also go to fireteam mates' portals.
+                        If set to 2, anyone can go to anyones portals.
+                    </td>
+                </tr>
+                <tr>
+                    <td>savelimit</td>
+                    <td>Any positive integer</td>
+                    <td>0</td>
+                    <td>If set to higher than 0, saves are limited to the set value.</td>
+                </tr>
+                </tbody>
+            </table>
+
         </section>
 
         <footer>
-          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+            This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a
+                href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
 
-        
-      </div>
+
     </div>
-  </body>
+</div>
+</body>
 </html>
